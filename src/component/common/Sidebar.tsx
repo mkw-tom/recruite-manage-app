@@ -13,7 +13,6 @@ import {
   Button,
 } from "@mui/material";
 import { Login } from "@mui/icons-material";
-import { Span } from "next/dist/trace";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
@@ -53,7 +52,7 @@ const Sidebar = () => {
 
   return (
     <div>
-      <div className="md:hidden block">
+      <div >
         <Button onClick={toggleDrawer(true)} >
           <ListRoundedIcon className="text-white text-3xl"></ListRoundedIcon>
         </Button>
@@ -61,9 +60,9 @@ const Sidebar = () => {
           {DrawerList}
         </Drawer>
       </div>
-      <div className="hidden md:block fixed top-20 left-0 bottom-0 w-auto border-r-2">
+      {/* <div className="hidden md:block fixed top-20 left-0 bottom-0 w-auto border-r-2 ">
         {DrawerList}
-      </div>
+      </div> */}
     </div>
   );
 };
