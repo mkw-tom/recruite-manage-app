@@ -1,10 +1,11 @@
+import Home from "./pages/Home"
+import './index.css'
 
-import Header from './component/common/Header'
 
 const App = () => {
   return (
     <div>
-      <Header />
+      <Home />
     </div>
   )
 }
