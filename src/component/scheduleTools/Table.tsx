@@ -7,28 +7,29 @@ import {
   AddCircleOutline,
 } from "@mui/icons-material";
 import React, { useState } from "react";
+import Stepper from "./Stepper";
+
 
 const Table = () => {
   const [keyDown, setKeyDown] = useState<boolean>(false);
-  const [addStep, setAddStep] = useState<boolean>(false);
 
   return (
     <table className="w-full  h-auto shadow-xl rounded-2xl border-2">
-      <thead className="rounded-2xl bg-sky-400 text-white">
+      <thead className="rounded-2xl bg-sky-400 text-white h-12">
         <tr className=" rounded-2xl ">
           <th></th>
-          <th className="w-64">企業名</th>
-          <th className="">業界</th>
-          <th className="">業種</th>
-          <th className="">勤務地</th>
-          <th className="">開催日時</th>
-          <th className="">イベント</th>
-          <th className=" ">エントリー状況</th>
+          <th className="w-64 border-r">企業名</th>
+          <th className="border-r">業界</th>
+          <th className="border-r">業種</th>
+          <th className="border-r">開催地</th>
+          <th className="border-r">開催日時</th>
+          <th className="border-r">イベント</th>
+          <th className="border-r">エントリー状況</th>
         </tr>
       </thead>
 
       <tbody className="">
-        <tr className="text-gray-600 h-20 border-b-2">
+        <tr className="text-gray-700 h-20 border-b-2">
           <th className="w-16 border-r">
             <button onClick={() => setKeyDown(!keyDown)}>
               {keyDown ? (
@@ -86,14 +87,15 @@ const Table = () => {
           <th>選考中</th>
         </tr>
         {keyDown ? (
-          <tr className="h-48">
-            <th aria-colspan={2} className="text-gray-700 relative">
-              <div className="absolute top-0 w-screen ps-3 py-1 flex">
-                <div className="w-4/12 bg-gray-200 ronded-md p-2">
-                  <h2 className="text-white bg-sky-400 rounded-md py-1 w-56">
+          <tr className="h-96">
+            <th className="text-gray-700 relative">
+              <div className="absolute top-0 w-screen h-96 py-1 flex-col">
+                {/* マイページ */}
+                <div className="w-11/12  ronded-md m-2 mb-5">
+                  <h2 className="text-white bg-sky-300 rounded-md py-1 w-56">
                     マイページ
                   </h2>
-                  <ul className="flex flex-col gap-2 text-left">
+                  <ul className="flex gap-24 text-left list-disc ml-8 pt-2">
                     <li>
                       URL：
                       <a
@@ -113,37 +115,8 @@ const Table = () => {
                   </ul>
                 </div>
 
-                <div className="w-6/12 h-12 bg-blue-50 ml-2 flex justify-center items-start">
-                  <div className="w-36 flex flex-col items-center">
-                    <p className="rounded-full bg-green-400 w-5 h-5 animate-pulse"></p>
-                    <label>説明会</label>
-                  </div>
-                  <KeyboardDoubleArrowRight className="text-green-400"></KeyboardDoubleArrowRight>
-                  <div className="w-36 flex flex-col items-center">
-                    <p className="rounded-full bg-gray-400 w-5 h-5 "></p>
-                    {addStep ? (
-                      <div className="flex items-center">
-                        <AddCircleOutline onClick={() => setAddStep(!addStep)}></AddCircleOutline>
-                        <select name="" id="" className="w-10/12 bg-gray-100">
-                          <option value="">説明会</option>
-                          <option value="">適性検査</option>
-                          <option value="">WEBテスト</option>
-                          <option value="">ES提出</option>
-                          <option value="">面接</option>
-                          <option value="">筆記試験</option>
-                          <option value="">インターン（長期）</option>
-                          <option value="">インターン（短期）</option>
-                          <option value="">本選考</option>
-                        </select>
-                      </div>
-                    ) : (
-                    <button className="bg-white rounded-md px-1 shadow-md flex items-center" onClick={() => setAddStep(!addStep)}>
-                      <AddCircleOutline></AddCircleOutline>
-                      <span>次のステップ</span>
-                    </button>
-                    )}
-                  </div>
-                </div>
+                {/* 選考フロー */}
+                <Stepper />
               </div>
             </th>
           </tr>
