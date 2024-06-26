@@ -8,9 +8,6 @@ const Home = () => {
     <div className='w-full h-auto '>
       <Header />
       <div className=' flex flex-col w-full mt-24 h-auto'>
-        <div className=''>
-          追加
-        </div>
         <Table />
       </div>
     </div>
