@@ -8,10 +8,14 @@ import {
 } from "@mui/icons-material";
 import React, { useState } from "react";
 import Stepper from "./Stepper";
+import { dammyUsers } from "../../dummyData";
 
 
 const Table = () => {
   const [keyDown, setKeyDown] = useState<boolean>(false);
+  // const user = dammyUsers[0];
+  // const currentStep = user?.steps?.find((step) => step.current === true);
+  
 
   return (
     <table className="w-full  h-auto shadow-xl rounded-2xl border-2">
@@ -20,7 +24,7 @@ const Table = () => {
           <th></th>
           <th className="w-64 border-r">企業名</th>
           <th className="border-r">業界</th>
-          <th className="border-r">業種</th>
+          <th className="border-r">業界</th>
           <th className="border-r">開催地</th>
           <th className="border-r">開催日時</th>
           <th className="border-r">イベント</th>
@@ -39,7 +43,7 @@ const Table = () => {
               )}
             </button>
           </th>
-          <th className="border-r">株式会社freee</th>
+          <th className="border-r">株式k会社freee</th>
           <th className="border-r">
             <select name="" id="" className="w-10/12 bg-gray-100">
               <option value="">IT・情報通信</option>
@@ -86,6 +90,7 @@ const Table = () => {
           </th>
           <th>選考中</th>
         </tr>
+
         {keyDown ? (
           <tr className="h-96">
             <th className="text-gray-700 relative">
@@ -95,7 +100,7 @@ const Table = () => {
                   <h2 className="text-white bg-sky-300 rounded-md py-1 w-56">
                     マイページ
                   </h2>
-                  <ul className="flex gap-24 text-left list-disc ml-8 pt-2">
+                  <ul className="flex gap-24 text-left list-disc py-2 bg-white pl-8 items-center rounded-md shadow-md mt-1">
                     <li>
                       URL：
                       <a
