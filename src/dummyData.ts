@@ -1,11 +1,10 @@
-export const dammyUsers = [
+export const dammyData = [
   {
     uid: "12938179afdoifhja",
     username: "tom",
     email: "tom@email.com",
     password: "123456",
-    companies: [
-      {
+    companies: {
         id:"11010",
         name: "株式会社freee",
         industy: "IT・情報通信",
@@ -102,7 +101,6 @@ export const dammyUsers = [
           },
         ],
       }
-    ],
     
   },
 ];
