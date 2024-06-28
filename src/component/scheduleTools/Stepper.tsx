@@ -5,6 +5,8 @@ import {
   DeleteOutline,
 } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
+import { dammyData } from "../../dummyData";
+import { Step } from "@mui/material";
 
 type StepsProps = {
   id: string;
@@ -12,38 +14,28 @@ type StepsProps = {
   completed: boolean;
   current: boolean;
   selected: boolean;
+  region: string;
+  startDate: string;
+  endDate: string;
+  startTime: string;
+  endTime: string;
+  limitDate: string;
+  limitTime: string;
 };
-// export const steps: string[] = ["ES提出", "面接", "インターン長期"];
-export const dammysteps: StepsProps[] = [
-  { id: "aa9", text: "エントリー", completed: true, current: false, selected: false},
-  { id: "a12", text: "説明会", completed: true, current: false, selected: false},
-  { id: "a65", text: "面接", completed: false, current: true, selected: false },
-  { id: "af9", text: "適正検査", completed: false, current: false, selected: false },
-  { id: "a42", text: "インターン長期", completed: false, current: false, selected: false },
-  { id: "a09", text: "本選考", completed: false, current: false, selected: false },
-  { id: "d9c", text: "本選考", completed: false, current: false, selected: false },
-];
 
 const Stepper = () => {
   const [addStep, setAddStep] = useState<boolean>(false);
-  const [steps, setSteps] = useState<StepsProps[]>(dammysteps)
-  // const [select,  setSelect] = useState<boolean>(false) 
 
+  const data = dammyData[0];
+  const steps = data.companies.steps;
+  const curStep = steps.find((step) => step.current === true);
+  const [selectData, setSelectData] = useState(curStep);
+  console.log(selectData);
 
-
-    const handleSelect = (id: string) => {
-      const newSteps: any = steps.map((step) => {
-        if(step.id === id) {
-           return step.selected === true;
-        } else {
-          return step.selected === false;
-        }
-        return
-      })
-      setSteps(newSteps);
-      console.log(newSteps)
-    }
-  
+  const handleSelect = (id: string) => {
+    const select = steps.find((step) => step.id === id);
+    setSelectData(select);
+  };
   return (
     <div className="w-auto h-auto m-2">
       <div className="flex justify-between">
@@ -65,7 +57,12 @@ const Stepper = () => {
         <div className="overflow-x-auto h-auto w-auto my-2 flex items-start mr-2">
           {steps.map((step: StepsProps, index: number) => (
             <div key={index} className="flex">
-              <div className={`w-36 flex flex-col items-center mx-5 group relative py-4 ${ step.selected ? "bg-gray-300" : "bg-inherit"}`} onClick={() => handleSelect(step.id)}>
+              <div
+                className={`w-36 flex flex-col items-center mx-5 group relative py-4 cursor-pointer ${
+                  step.current ? "bg-sky-200" : "bg-inherit"
+                }`}
+                onClick={() => handleSelect(step.id)}
+              >
                 {step.completed ? (
                   <CheckCircleOutline className="text-green-600" />
                 ) : (
@@ -98,20 +95,25 @@ const Stepper = () => {
         <div className="w-6/12  bg-white   rounded-md flex py-1 shadow-md">
           <h2 className="w-56 h-auto my-auto flex items-center justify-center">
             <CheckCircleOutline className="text-green-600 mr-2" />
-            <span>インターン</span>
+            <span>{selectData?.text}</span>
           </h2>
           <ul className="list-disc text-left">
-            <li>応募期限：2024 7/25 23:59</li>
             <li>
-              開催期間：2024 8/12 10:20<span className="mx-2">~</span>2024 8/19
-              18:00
+              応募期限：{selectData?.limitDate} {selectData?.limitTime}{" "}
+            </li>
+            <li>
+              開催期間：{selectData?.startDate}　{selectData?.endDate}
+              <span className="mx-2">~</span>
+              {selectData?.startTime}　{selectData?.endTime}
             </li>
           </ul>
         </div>
 
         <div className="flex w-6/12">
           <div className="flex mx-auto">
-            <button className="w-28 h-10 border-2 border-red-500 text-red-500 rounded-md mr-2 hover:bg-red-500 hover:text-white duration-500">faild</button>
+            <button className="w-28 h-10 border-2 border-red-500 text-red-500 rounded-md mr-2 hover:bg-red-500 hover:text-white duration-500">
+              faild
+            </button>
             <button className="border-2 border-sky-400 text-sky-400 w-28 h-10 hover:bg-sky-400 hover:text-white duration-100 rounded-l-md">
               prev
             </button>

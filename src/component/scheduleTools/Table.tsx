@@ -5,26 +5,37 @@ import {
   KeyboardArrowRight,
   KeyboardDoubleArrowRight,
   AddCircleOutline,
+  ContentCopy
 } from "@mui/icons-material";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Stepper from "./Stepper";
-import { dammyUsers } from "../../dummyData";
+
 
 
 const Table = () => {
   const [keyDown, setKeyDown] = useState<boolean>(false);
   // const user = dammyUsers[0];
   // const currentStep = user?.steps?.find((step) => step.current === true);
-  
 
+  // const copyTextToClipboard = (text: string) => {
+  //   navigator.clipboard.writeText(text)
+  //   .then(function() {
+  //     console.log('Async: Copying to clipboard was successful!');
+  //   }, function(err) {
+  //     console.error('Async: Could not copy text: ', err);
+  //   });
+  // }
+  
+  
+  
   return (
-    <table className="w-full  h-auto shadow-xl rounded-2xl border-2">
+    <table className="w-full  h-auto shadow-xl border-2">
       <thead className="rounded-2xl bg-sky-400 text-white h-12">
         <tr className=" rounded-2xl ">
           <th></th>
           <th className="w-64 border-r">企業名</th>
-          <th className="border-r">業界</th>
-          <th className="border-r">業界</th>
+          <th className="border-r">業種</th>
+          <th className="border-r">職種</th>
           <th className="border-r">開催地</th>
           <th className="border-r">開催日時</th>
           <th className="border-r">イベント</th>
@@ -83,9 +94,6 @@ const Table = () => {
           <th className="border-r">
             <select name="" id="" className="w-10/12 bg-gray-100">
               <option value="">説明会</option>
-              <option value="">インターン（長期）</option>
-              <option value="">インターン（短期）</option>
-              <option value="">本選考</option>
             </select>
           </th>
           <th>選考中</th>
@@ -112,7 +120,7 @@ const Table = () => {
                       </a>
                     </li>
                     <li>
-                      ログインID：<span>aaiiuueeoo</span>
+                      ログインID：<span>aaaaa</span>
                     </li>
                     <li>
                       パスワード：<span>123456</span>
