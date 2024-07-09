@@ -7,7 +7,6 @@ import Header from "../component/common/Header";
 const login = () => {
   return (
     <div className="w-full h-full pb-24">
-      <Header />
       <div className="mt-20"></div>
 
       <main className="flex flex-wrap w-full h-full px-5">
