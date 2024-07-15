@@ -3,27 +3,36 @@ import React, { useState } from "react";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import {
-  ArrowRight,
+
   Delete,
   Edit,
   Settings,
   ArrowOutward,
   Description,
+  RemoveRedEye,
+  VisibilityOff,
 } from "@mui/icons-material";
 import { List } from "@mui/material";
 import TaskDescription from "./TaskDescription";
 import Tasks from "./Tasks";
+import Mypage from "./Mypage";
+
+
 
 const Card = ({ card }: { card: string }) => {
   const [open, setOpen] = useState<boolean>(false);
+  
+
   const toggle = () => {
-    setOpen(!open);
-  };
+    setOpen(!open)
+  }
+
+
 
   return (
-    <div className="bg-white rounded-md w-full h-auto mb-10 shadow-xl relative">
+    <div className="bg-white rounded-md  lg:w-5/12 w-full  h-full mb-24 shadow-md relative">
       <header className="flex justify-end bg-blue-900 h-6 rounded-t-md mb-3 items-center">
-        <button className=" elative" onClick={toggle} onBlur={toggle}>
+        <button className=" elative" onClick={toggle} onBlur={toggle} >
           <Settings className="text-white mr-1"></Settings>
         </button>
         <div
@@ -45,7 +54,7 @@ const Card = ({ card }: { card: string }) => {
 
       <main className="p-5">
         <div className="flex items-center">
-          <div className="md:flex md:gap-9 md items-center">
+          <div className="flex flex-col gap-1">
             <h1 className="font-bold text-xl md:text-xl ">{card}</h1>
             <p className="">インターン短期</p>
           </div>
@@ -67,36 +76,19 @@ const Card = ({ card }: { card: string }) => {
           </ul>
         </div>
 
-        <div className="flex gap-5 bg-gray-100 rounded-sm p-2 mt-2">
-          <a
-            href="https://mui.com/material-ui/material-icons/"
-            target="blank"
-            className="bg-gray-500 text-white px-2 py-1 text-sm rounded-md flex items-center hover:opacity-40 duration-150"
-          >
-            <span className="mr-1">マイページへ移動</span>
-            <ArrowOutward className="text-sm"></ArrowOutward>
-          </a>
-          <ul className="md:flex md:gap-10 md:items-center ">
-            <li className="mb-1 md:mb-0">
-              ID: <span>abcd1111</span>
-            </li>
-            <li className="">
-              Password: <span>yrut8559</span>
-            </li>
-          </ul>
-        </div>
+        <Mypage />
 
         <Tasks />
 
-        <div className="md:flex items-center mt-5">
+        <div className="flex flex-col items-center mt-5 gap-5">
           <TaskDescription />
 
-          <div className="flex md:w-5/12 h-auto justify-end gap-3 ml-auto mt-5 md:mt-auto">
-            <button className="w-2/6 h-8 bg-red-800 text-white font-bold rounded-md">
+          <div className="flex w-full h-auto justify-end gap-3 ml-auto mt-5 md:mt-auto">
+            <button className="w-2/6 h-10 bg-red-800 text-white font-bold rounded-md">
               不合格
             </button>
-            <button className="w-4/6 h-8 bg-orange-500 text-white font-bold rounded-md">
-              完了
+            <button className="w-4/6 h-10 bg-orange-500 text-white font-bold rounded-md">
+              通過
             </button>
           </div>
         </div>

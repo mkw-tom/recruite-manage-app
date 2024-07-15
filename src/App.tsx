@@ -3,6 +3,7 @@ import Login from "./pages/Login"
 import { BrowserRouter, Router, Route, Routes, Outlet } from "react-router-dom"
 import './index.css'
 import Header from "./component/common/Header"
+import Profile from "./pages/Profile"
 // import Login from "./pages/login"
 
 
@@ -11,6 +12,7 @@ const App = () => {
     <BrowserRouter>
       <Header />
         <Routes>
+          <Route path="/profile" element={<Profile />} />
           <Route path="/" element={<Home />}/>
           <Route path="login" element={<Login />}/>
         </Routes>

@@ -41,7 +41,7 @@ const login = () => {
           </form>
         </div>
 
-        <div className="w-full h-auto lg:w-1/2 flex-col mt-20 justify-center items-center ">
+        <div className="w-full h-auto lg:w-1/2 flex-col mt-24 justify-center items-center ">
           <DesignBox />
         </div>
       </main>

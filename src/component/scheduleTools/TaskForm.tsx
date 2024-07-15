@@ -24,19 +24,19 @@ const TaskForm = () => {
           ))}
         </select>
       </label>
-      <label htmlFor="text">
+      <label htmlFor="test">
         テスト形式：
         <input
-          type="text"
+          type="test"
           id="text"
           className="bg-white shadow-inner border-2 rounded-md w-2/5"
         />
       </label>
-      <label htmlFor="date">
+      <label htmlFor="actdate">
         実践日時：
         <input
           type="datetime-local"
-          id="date"
+          id="actdate"
           className="bg-white shadow-inner border-2 rounded-md w-2/5"
         />
         <CalendarMonth className="absolute -ml-7 pt-1 pointer-events-none "></CalendarMonth>
@@ -60,28 +60,28 @@ const TaskForm = () => {
           ))}
         </select>
       </label>
-      <label htmlFor="text">
+      <label htmlFor="test">
         テスト形式：
         <input
           type="text"
-          id="text"
+          id="test"
           className="bg-white shadow-inner border-2 rounded-md w-2/5"
         />
       </label>
-      <label htmlFor="date">
+      <label htmlFor="act">
         実践日時：
         <input
           type="datetime-local"
-          id="date"
+          id="act"
           className="bg-white shadow-inner border-2 rounded-md w-2/5"
         />
         <CalendarMonth className="absolute -ml-7 pt-1 pointer-events-none "></CalendarMonth>
       </label>
-      <label htmlFor="date">
+      <label htmlFor="limit">
         期限：
         <input
           type="datetime-local"
-          id="date"
+          id="limit"
           className="bg-white shadow-inner border-2 rounded-md w-2/5"
         />
         <CalendarMonth className="absolute -ml-7 pt-1 pointer-events-none "></CalendarMonth>
