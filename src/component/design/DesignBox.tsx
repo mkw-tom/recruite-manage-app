@@ -7,7 +7,7 @@ const DesignBox = () => {
 
   return (
     <div className="bg-gray-50 w-4/5 h-96 rounded-md shadow-xl mx-auto relative overflow-hidden">
-      <header className="flex h-8 bg-blue-800 rounded-t-md items-center px-1 text-white ">
+      <header className="flex h-8 bg-blue-800 rounded-t-md items-center px-1 text-white">
         <List
           className="ml-1 text-white"
           style={{ fontSize: "10px", display: "block" }}

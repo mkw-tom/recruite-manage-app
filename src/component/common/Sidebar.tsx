@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import { Home, Login, LoginOutlined, Person2 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import avater from "../../assets/noAvatar.png"
 
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
@@ -28,8 +29,8 @@ const Sidebar = () => {
 
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
-      <div className="flex flex-col items-center bg-blue-800 text-white">
-        <img src="" alt="" />
+      <div className="flex flex-col items-center bg-blue-800 text-white pt-5 pb-3">
+        <img src={avater} alt="" className="w-28 h-28 rounded-full border-4 border-white mb-2"/>
         <h2 className="">{`user name`}</h2>
         <h3 className="">{`user@email.com`}</h3>
         <div className="flex flex-col justify-center items-center my-3 gap-1">
@@ -40,7 +41,7 @@ const Sidebar = () => {
       <Divider />
       <List>
         {listItems.map((item, index) => (
-          <Link to={item.param}>
+          <Link to={item.param} key={index}>
             <ListItem key={index} disablePadding>
               <ListItemButton>
                 <ListItemIcon>{item.icon}</ListItemIcon>
