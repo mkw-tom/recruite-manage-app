@@ -4,6 +4,7 @@ import "../index.css"
 import CardList from '../component/scheduleTools/CardList'
 import BusinessIcon from '@mui/icons-material/Business';
 import AddFrom from '../component/scheduleTools/AddForm';
+import AddTaskForm from '../component/addTaskForm/AddTaskForm';
 
 const Home = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -27,6 +28,7 @@ const Home = () => {
       </main>
 
       <AddFrom open={open} setOpen={setOpen}/>
+
       
       <div className="flex flex-col fixed bottom-20 lg:bottom-24 right-3 lg:right-10 items-center">
         <p className='text-blue-800 mb-1'>企業を追加</p>

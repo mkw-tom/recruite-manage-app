@@ -1,14 +1,11 @@
 import {
   AddCircle,
-  BusinessOutlined,
-  CalendarMonth,
-  FormatOverlineSharp,
-  OpenInBrowserTwoTone,
-  SignLanguage,
+  ArrowBack,
+  Cancel,
 } from "@mui/icons-material";
 import React, { useRef, useState } from "react";
-import TaskForm from "./TaskForm";
-import CompanyEventForm from "./CompanyEventForm";
+import TaskForm from "../addForm/TaskForm";
+import CompanyEventForm from "../addForm/CompanyEventForm";
 import { calculateOverrideValues } from "next/dist/server/font-utils";
 
 type OpenProps = {
@@ -33,12 +30,21 @@ const AddFrom = ({ open, setOpen }: OpenProps) => {
     setTranslateY("-translate-x-1/2 transition ease-out")
   }
 
+  const slideBack = () => {
+    setTranslateY("translate-x-1 transition ease-out")
+  }
+
+  const cancel = () => {
+    setOpen(!open)
+    slideBack()
+  }
+
   return (
     <div
       className={`w-full h-full fixed top-0 left-0 right-0 overflow-y-auto bg-opacity-40 bg-gray-900 z-50`}
       style={{ display: open ? "block" : "none" }}
     >
-      <div className="w-11/12 mx-auto rounded-md overflow-hidden">
+      <div className="w-11/12 mx-auto overflow-hidden">
         <div className={`bg-white w-full h-auto mt-36  ${translateY}`} style={{width : "calc(100% * 2)"}}>
           <div className="w-full h-auto">
             {/* <div className="flex justify-between">
@@ -50,15 +56,39 @@ const AddFrom = ({ open, setOpen }: OpenProps) => {
             </div> */}
 
             <div className="flex w-full h-full">
-              <CompanyEventForm translateY={translateY} setTranslateY={setTranslateY}/>
-              {/* <hr className="lg:hidden" /> */}
-              <CompanyEventForm translateY={translateY} setTranslateY={setTranslateY}/>
+              <CompanyEventForm />
+              <hr className="lg:hidden" />
+              <TaskForm />
             </div>
 
-            {/* <button className="flex bg-orange-500 items-center justify-center rounded-md text-white w-3/12 h-12 mt-5 ml-auto hover:opacity-50 " onClick={slide}>
-              <span className="text-lg mr-2">追加</span>
-              <AddCircle></AddCircle>
-            </button> */}
+            <div className="flex">
+              <div className="w-1/2 flex items-center justify-end p-3 gap-3">
+                <button className="flex bg-gray-500 items-center justify-center rounded-md text-white w-1/4 h-12 hover:opacity-50 " onClick={cancel}>
+                  <span className="text-lg mr-2">中止</span>
+                  <Cancel></Cancel>
+                </button>
+                <button className="flex bg-orange-500 items-center justify-center rounded-md text-white w-1/4 h-12 hover:opacity-50 " onClick={slide}>
+                  <span className="text-lg mr-2">追加</span>
+                  <AddCircle></AddCircle>
+                </button>
+              </div>
+
+              <div className="w-1/2 flex items-center justify-end p-3 gap-3">
+              <button className="flex bg-blue-500 items-center justify-center rounded-md text-white w-1/4 h-12 hover:opacity-50 mr-auto" onClick={slideBack}>
+                  <ArrowBack></ArrowBack>
+                  <span className="text-lg ml-2">戻る</span>
+                </button>
+                <button className="flex bg-gray-500 items-center justify-center rounded-md text-white w-1/4 h-12 hover:opacity-50 " onClick={cancel}>
+                  <span className="text-lg mr-2">中止</span>
+                  <Cancel></Cancel>
+                </button>
+                <button className="flex bg-orange-500 items-center justify-center rounded-md text-white w-1/4 h-12 hover:opacity-50 " onClick={slide}>
+                  <span className="text-lg mr-2">追加</span>
+                  <AddCircle></AddCircle>
+                </button>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>
