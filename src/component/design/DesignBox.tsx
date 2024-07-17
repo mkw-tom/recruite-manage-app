@@ -2,8 +2,15 @@ import React from "react";
 import DesignCard from "./DesignCard";
 import { List } from "@mui/icons-material";
 
+
 const DesignBox = () => {
-  const data: number[] = [1, 2];
+
+  const datas = [
+    {task: "説明会・オープンカンパニー", situation: "完了"},
+    {task: "インターン短期", situation: "結果待ち"},
+    {task: "インターン長期", situation: "通過"},
+    {task: "ハッカソン", situation: "未完了"},
+  ];
 
   return (
     <div className="bg-gray-50 w-4/5 h-96 rounded-md shadow-xl mx-auto relative overflow-hidden">
@@ -41,9 +48,11 @@ const DesignBox = () => {
           </li>
         </ul>
       </nav>
-      {data.map((l: number) => (
-        <DesignCard key={l} />
-      ))}
+      <div className="flex flex-wrap">
+        {datas.map((data, index) => (
+          <DesignCard key={index} task={data.task} situation={data.situation} />
+        ))}
+      </div>
     </div>
   );
 };

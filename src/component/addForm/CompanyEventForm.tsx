@@ -13,16 +13,9 @@ export const eventOptios = [
   "本選考",
 ];
 
-type transitionProps = {
-  translateY: string;
-  setTranslateY: React.Dispatch<React.SetStateAction<string>>;
-};
 
-const CompanyEventForm = ({ translateY, setTranslateY }: transitionProps) => {
-  const slide = () => {
-    setTranslateY("-translate-x-1/2 transition ease-out");
-  };
 
+const CompanyEventForm = () => {
   return (
     <div className="w-1/2 p-8">
       <div className="flex justify-between mb-5 w-full">
@@ -110,13 +103,6 @@ const CompanyEventForm = ({ translateY, setTranslateY }: transitionProps) => {
           </label>
         </div>
       </div>
-      <button
-        className="flex bg-orange-500 items-center justify-center rounded-md text-white w-3/12 h-12 mt-5 ml-auto hover:opacity-50 "
-        onClick={slide}
-      >
-        <span className="text-lg mr-2">追加</span>
-        <AddCircle></AddCircle>
-      </button>
     </div>
   );
 };

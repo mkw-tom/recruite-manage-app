@@ -1,0 +1,105 @@
+import { AddCircle, CalendarMonth, Task } from "@mui/icons-material";
+import React from "react";
+import { taskOptions } from "../../selectOptions";
+
+
+
+
+export const dammyTasks: string[] = ["ES提出", "面接", "インターン長期"];
+
+const TaskForm = () => {
+  return (
+    <div className="w-1/2 p-8 ">
+      <div className="flex justify-between mb-5 w-full rounded-t-md">
+        <h1 className="text-2xl text-red-600 font-bold flex items-center">
+          <Task style={{ fontSize: "33px" }} />
+          <span>タスク追加</span>
+        </h1>
+        {/* <button onClick={() => setOpen(!open)}>閉じる</button> */}
+      </div>
+      <div className="flex flex-col lg:flex-row  w-full h-auto lg:full gap-6 ml-3 ">
+        <div className="flex flex-col  h-auto w-full lg:w-1/2 gap-6 rounded-md p-3 ">
+          <h2 className="font-bold text-lg text-red-700">タスクの追加</h2>
+          <label htmlFor="event">
+            タスク：
+            <select className="bg-white shadow-inner border-2 rounded-md w-3/5">
+              {taskOptions.map((option, index) => (
+                <option key={index}>{option}</option>
+              ))}
+            </select>
+          </label>
+          <label htmlFor="test">
+            テスト形式：
+            <input
+              type="test"
+              id="text"
+              className="bg-white shadow-inner border-2 rounded-md w-2/5"
+            />
+          </label>
+          <label htmlFor="actdate">
+            実践日時：
+            <input
+              type="datetime-local"
+              id="actdate"
+              className="bg-white shadow-inner border-2 rounded-md w-2/5"
+            />
+            <CalendarMonth className="absolute -ml-7 pt-1 pointer-events-none "></CalendarMonth>
+          </label>
+          <label htmlFor="date">
+            期限：
+            <input
+              type="datetime-local"
+              id="date"
+              className="bg-white shadow-inner border-2 rounded-md w-2/5"
+              onChange={(e) => {console.log(e.target.value)}}
+            />
+            <CalendarMonth className="absolute -ml-7 pt-1 pointer-events-none "></CalendarMonth>
+          </label>
+        </div>
+
+        <hr className="my-5" />
+
+        <div className="flex flex-col  h-auto w-full lg:w-1/2 gap-6 rounded-md p-3 ">
+          <h2 className="font-bold text-lg text-sky-700">次のタスク</h2>
+          <label htmlFor="event">
+            タスク：
+            <select className="bg-white shadow-inner border-2 rounded-md w-3/5">
+              {taskOptions.map((option, index) => (
+                <option key={index}>{option}</option>
+              ))}
+            </select>
+          </label>
+          <label htmlFor="test">
+            テスト形式：
+            <input
+              type="test"
+              id="text"
+              className="bg-white shadow-inner border-2 rounded-md w-2/5"
+            />
+          </label>
+          <label htmlFor="actdate">
+            実践日時：
+            <input
+              type="datetime-local"
+              id="actdate"
+              className="bg-white shadow-inner border-2 rounded-md w-2/5"
+            />
+            <CalendarMonth className="absolute -ml-7 pt-1 pointer-events-none "></CalendarMonth>
+          </label>
+          <label htmlFor="date">
+            期限：
+            <input
+              type="datetime-local"
+              id="date"
+              className="bg-white shadow-inner border-2 rounded-md w-2/5"
+            />
+            <CalendarMonth className="absolute -ml-7 pt-1 pointer-events-none "></CalendarMonth>
+          </label>
+        </div>
+
+      </div>
+    </div>
+  );
+};
+
+export default TaskForm;

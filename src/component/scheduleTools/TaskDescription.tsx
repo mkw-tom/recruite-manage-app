@@ -1,8 +1,11 @@
 import { ArrowRight, ArrowDropDown, AddCircle } from "@mui/icons-material";
 import React, { useState } from "react";
+import AddTaskForm from "../addTaskForm/AddTaskForm";
 
 const TaskDescription = () => {
   const [open, setOpen] = useState<boolean>(false)
+  const [addFormOpen, setAddFormOpen] = useState<boolean>(false)
+
 
   const toggle = () => {
     setOpen(!open)
@@ -10,6 +13,8 @@ const TaskDescription = () => {
 
   return (
     <div className="flex flex-col w-full ">
+      <AddTaskForm addFormOpen={addFormOpen} setAddFormOpen={setAddFormOpen}/>
+
       <button className="flex py-2 border-y-2 h-auto w-full" onClick={toggle}>
           {open ? (<ArrowDropDown></ArrowDropDown>) : (<ArrowRight></ArrowRight>)}
         選考フロー
@@ -39,8 +44,10 @@ const TaskDescription = () => {
           メモ：面接時の服装は自由
         </p>
       </div>
-      <div className=" flex flex-col h-12 gap-1 md:ml-1 border-b-2 p-1"  style={{display : open ? "block" : "none"}}>
-        <button className="flex items-center gap-2 h-full  w-full justify-center font-bold hover:bg-sky-100 border-dashed border-2 rounded-md">
+      <div className=" flex flex-col h-12 gap-1 md:ml-1 border-b-2 p-1 hover:bg-green-100"  style={{display : open ? "block" : "none"}}>
+        <button className="flex items-center gap-2 h-full  w-full justify-center font-bold  border-dashed border-2 "
+        onClick={() => setAddFormOpen(!addFormOpen)}
+        >
           タスクの追加<AddCircle></AddCircle>
         </button>
       </div>
