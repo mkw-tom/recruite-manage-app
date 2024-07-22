@@ -13,15 +13,32 @@ import {
   Button,
 } from "@mui/material";
 import { Home, Login, LoginOutlined, Person2 } from "@mui/icons-material";
-import { Link } from "react-router-dom";
-import avater from "../../assets/noAvatar.png"
+import { Link, Navigate, } from "react-router-dom";
+import avater from "../../assets/noAvatar.png";
+import { useAuth } from "../../context/AuthContext";
+
 
 const Sidebar = () => {
+  const { logOut } = useAuth();
   const [open, setOpen] = useState(false);
+
   const listItems = [
-    { text: <span className="text-sky-700">ホーム</span>, icon: <Home className="text-sky-700"></Home>, param: "/"},
-    { text: <span className="text-sky-700">プロフィール</span>, icon: <Person2 className="text-sky-700"></Person2>, param: "/profile"},
-    { text: <span className="text-sky-700">ログアウト</span>, icon: <LoginOutlined className="text-sky-700"></LoginOutlined>, param: "/login"},
+    {
+      text: <Link to="/home" className="text-sky-700 block w-full">ホーム</Link>,
+      icon: <Home className="text-sky-700"></Home>,
+    },
+    {
+      text: <Link to="/profile" className="text-sky-700 block w-full">プロフィール</Link>,
+      icon: <Person2 className="text-sky-700"></Person2>,
+    },
+    {
+      text: (
+        <button className="text-sky-700" onClick={logOut}>
+          ログアウト
+        </button>
+      ),
+      icon: <LoginOutlined className="text-sky-700"></LoginOutlined>,
+    },
   ];
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
@@ -30,25 +47,27 @@ const Sidebar = () => {
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
       <div className="flex flex-col items-center bg-blue-800 text-white pt-5 pb-3">
-        <img src={avater} alt="" className="w-28 h-28 rounded-full border-4 border-white mb-2"/>
+        <img
+          src={avater}
+          alt=""
+          className="w-28 h-28 rounded-full border-4 border-white mb-2"
+        />
         <h2 className="">{`user name`}</h2>
         <h3 className="">{`user@email.com`}</h3>
         <div className="flex flex-col justify-center items-center my-3 gap-1">
-          <span className="">{`全ての企業：${'4'}社`}</span>
-          <span className="">{`内定・確定済み：${'２'}社`}</span>
+          <span className="">{`全ての企業：${"4"}社`}</span>
+          <span className="">{`内定・確定済み：${"２"}社`}</span>
         </div>
       </div>
       <Divider />
       <List>
         {listItems.map((item, index) => (
-          <Link to={item.param} key={index}>
-            <ListItem key={index} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.text} />
-              </ListItemButton>
-            </ListItem>
-          </Link>
+          <ListItem key={index} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText primary={item.text} />
+            </ListItemButton>
+          </ListItem>
         ))}
       </List>
     </Box>
@@ -56,11 +75,15 @@ const Sidebar = () => {
 
   return (
     <div>
-      <div >
-        <Button onClick={toggleDrawer(true)} >
+      <div>
+        <Button onClick={toggleDrawer(true)}>
           <ListRoundedIcon className="text-white text-3xl"></ListRoundedIcon>
         </Button>
-        <Drawer open={open} onClose={toggleDrawer(false)} className="text-sky-700">
+        <Drawer
+          open={open}
+          onClose={toggleDrawer(false)}
+          className="text-sky-700"
+        >
           {DrawerList}
         </Drawer>
       </div>

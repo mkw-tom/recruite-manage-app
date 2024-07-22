@@ -10,13 +10,13 @@ const DesignCard = ({task, situation}: {task: string, situation: string}) => {
       return (<p className="w-2 h-2 bg-gray-400 rounded-full"></p>)
     } else if (situation === "落選") {
       return (<p className="w-2 h-2 bg-red-500 rounded-full"></p>)
-    } else {
-      return (<CheckCircle className="text-green-500" style={{fontSize : "8px"}}></CheckCircle>)
+    } else{
+      return (<CheckCircle className="text-orange-500" style={{fontSize : "8px"}}></CheckCircle>)
     }
   }
 
   return (
-    <div className="w-5/12 h-auto bg-white shadow-md mx-auto mt-8 mb-5 rounded-sm">
+    <div className="w-72 md:w-5/12  h-auto bg-white shadow-md mx-auto mt-8 mb-5 rounded-sm">
       <div className="bg-blue-900 rounded-t-sm h-3 w-full"></div>
 
       <div className="p-2">

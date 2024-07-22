@@ -16,10 +16,12 @@ import { List } from "@mui/material";
 import TaskDescription from "./TaskDescription";
 import Tasks from "./Tasks";
 import Mypage from "./Mypage";
+import { PostType } from "../../typs";
 
 
 
-const Card = ({ card }: { card: string }) => {
+
+const Card = ({ card }: { card: PostType }) => {
   const [open, setOpen] = useState<boolean>(false);
   
 
@@ -32,7 +34,7 @@ const Card = ({ card }: { card: string }) => {
   return (
     <div className="bg-white rounded-md  lg:w-5/12 w-full  h-full mb-24 shadow-md relative">
       <header className="flex justify-end bg-blue-900 h-6 rounded-t-md mb-3 items-center">
-        <button className=" elative" onClick={toggle} onBlur={toggle} >
+        <button className="relative" onClick={toggle} onBlur={toggle} >
           <Settings className="text-white mr-1"></Settings>
         </button>
         <div
@@ -55,8 +57,8 @@ const Card = ({ card }: { card: string }) => {
       <main className="p-5">
         <div className="flex items-center">
           <div className="flex flex-col gap-1">
-            <h1 className="font-bold text-xl md:text-xl ">{card}</h1>
-            <p className="">インターン短期</p>
+            <h1 className="font-bold text-xl md:text-xl ">{card.name}</h1>
+            <p className="">{card.event}</p>
           </div>
 
           <div className="flex items-center ml-auto">
@@ -68,20 +70,20 @@ const Card = ({ card }: { card: string }) => {
         <div className="mt-5 bg-gray-100 p-2 rounded-sm">
           <ul className="flex flex-col gap-1">
             <li className="border-l-4 border-l-gray-900 pl-2 text-gray-900">
-              開催地：東京
+              開催地： {card.region}
             </li>
             <li className="border-l-4 border-l-gray-900 pl-2 text-gray-900">
-              開催日時：7/10 ~ 7/20
+              開催日時：{new Date(card.date).toLocaleString().slice(0, -3)}
             </li>
           </ul>
         </div>
 
-        <Mypage />
+        <Mypage card={card}/>
 
-        <Tasks />
+        <Tasks card={card}/>
 
         <div className="flex flex-col items-center mt-5 gap-5">
-          <TaskDescription />
+          <TaskDescription card={card}/>
 
           <div className="flex w-full h-auto justify-end gap-3 ml-auto mt-5 md:mt-auto">
             <button className="w-2/6 h-10 bg-red-800 text-white font-bold rounded-md">
