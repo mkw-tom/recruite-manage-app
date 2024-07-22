@@ -13,7 +13,7 @@ const DesignBox = () => {
   ];
 
   return (
-    <div className="bg-gray-50 w-4/5 h-96 rounded-md shadow-xl mx-auto relative overflow-hidden">
+    <div className="bg-gray-50 w-4/5 h-96 rounded-md shadow-xl mx-auto relative overflow-hidden mt-24">
       <header className="flex h-8 bg-blue-800 rounded-t-md items-center px-1 text-white">
         <List
           className="ml-1 text-white"
@@ -33,15 +33,15 @@ const DesignBox = () => {
         </div>
       </header>
       <nav className="bg-white w-full h-4 shadow-md bg-opacity-65">
-        <ul className="flex w-full h-full justify-around items-center text-blue-500 font-bold text-center">
+        <ul className="flex w-full h-auto justify-around items-center text-blue-500 font-bold text-center">
           <li
-            className="border-r-2 w-6/12 border-b-2 border-b-blue-600 pt-1"
+            className="border-r-2 w-6/12 h-4 border-b-2 border-b-blue-600"
             style={{ fontSize: "8px" }}
           >
             全てのイベント
           </li>
           <li
-            className="border-r-2 w-6/12 border-b-2 pt-1"
+            className="border-r-2 w-6/12 h-4 border-b-2"
             style={{ fontSize: "8px" }}
           >
             内定・確定済み

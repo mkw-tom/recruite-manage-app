@@ -1,7 +1,8 @@
 import { KeyboardDoubleArrowRight } from "@mui/icons-material";
 import React from "react";
+import { PostType } from "../../typs";
 
-const Tasks = () => {
+const Tasks = ({card}: {card: PostType}) => {
   return (
     <div className="flex justify-around items-center mt-4">
       <div className="flex flex-col items-center text-center w-4/12">

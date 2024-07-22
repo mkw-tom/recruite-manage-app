@@ -17,3 +17,27 @@ export type editTaskProps = {
   dummyTasksData: TasksDataProps[],
   setDummyTasksData: React.Dispatch<React.SetStateAction<TasksDataProps[]>>, 
 }
+
+export type PostType = {
+  userId: string;
+  name: string;
+  event: string;
+  region: string;
+  date: string;
+  mypage: {
+    url: string;
+    id: string;
+    password: string;
+  };
+  taskFlow: [
+    {
+      task: string;
+      situation: string;
+      testFormat: string;
+      date: string;
+      limitData: string;
+    }
+  ];
+  createdAt: Date;
+  updatedAt: Date;
+};
