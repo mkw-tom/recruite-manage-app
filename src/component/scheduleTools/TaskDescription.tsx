@@ -39,7 +39,7 @@ const TaskDescription = ({card}: {card: PostType}) => {
             <span className="ml-5 text-sm">{task.situation}</span>
           </h3>
           <p className="border-l-2 border-gray-500 pl-2">
-            期限：<span>{new Date(task.limitData).toLocaleString()}</span>
+            期限：<span>{new Date(task.limitDate).toLocaleString()}</span>
           </p>
           <p className="border-l-2 border-gray-500 pl-2">
             実践日時：<span>{new Date(task.date).toLocaleString()}</span>

@@ -58,8 +58,8 @@ const login = () => {
       <section>
         <h2 className="text-center text-4xl mb-2 font-bold">Smart就活管理</h2>
         <h3 className="text-center text-2xl">これまでの煩雑な企業管理のストレスを軽減</h3>
-        <DesignBox />
         <DescriptionBox />
+        <DesignBox />
       </section>
     </div>
   );

@@ -7,23 +7,16 @@ import React, { useRef, useState } from "react";
 import TaskForm from "../addForm/TaskForm";
 import CompanyEventForm from "../addForm/CompanyEventForm";
 import { calculateOverrideValues } from "next/dist/server/font-utils";
+import { PostType } from "../../typs";
 
-type OpenProps = {
+type EditFormProps = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  post: PostType;
 };
 
-// export const textOptions = [
-//   "SPI3",
-//   "玉手箱Ⅲ",
-//   "Web-GAB",
-//   "C-GAB",
-//   "CAB",
-//   "3Eテスト",
-//   "その他"
-// ]
 
-const AddFrom = ({ open, setOpen }: OpenProps) => {
+const EditForm = ({ open, setOpen, post}: EditFormProps) => {
   const [translateY, setTranslateY] = useState<string>("")
 
   const slide = () => {
@@ -73,21 +66,6 @@ const AddFrom = ({ open, setOpen }: OpenProps) => {
                 </button>
               </div>
 
-              <div className="w-1/2 flex items-center justify-end p-3 gap-3">
-              <button className="flex bg-blue-500 items-center justify-center rounded-md text-white w-1/4 h-12 hover:opacity-50 mr-auto" onClick={slideBack}>
-                  <ArrowBack></ArrowBack>
-                  <span className="text-lg ml-2">戻る</span>
-                </button>
-                <button className="flex bg-gray-500 items-center justify-center rounded-md text-white w-1/4 h-12 hover:opacity-50 " onClick={cancel}>
-                  <span className="text-lg mr-2">中止</span>
-                  <Cancel></Cancel>
-                </button>
-                <button className="flex bg-orange-500 items-center justify-center rounded-md text-white w-1/4 h-12 hover:opacity-50 " onClick={slide}>
-                  <span className="text-lg mr-2">追加</span>
-                  <AddCircle></AddCircle>
-                </button>
-              </div>
-
             </div>
           </div>
         </div>
@@ -96,4 +74,4 @@ const AddFrom = ({ open, setOpen }: OpenProps) => {
   );
 };
 
-export default AddFrom;
+export default EditForm;
