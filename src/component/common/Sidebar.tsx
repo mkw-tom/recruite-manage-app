@@ -19,7 +19,7 @@ import { useAuth } from "../../context/AuthContext";
 
 
 const Sidebar = () => {
-  const { logOut } = useAuth();
+  const { user, logOut } = useAuth();
   const [open, setOpen] = useState(false);
 
   const listItems = [
@@ -52,10 +52,10 @@ const Sidebar = () => {
           alt=""
           className="w-28 h-28 rounded-full border-4 border-white mb-2"
         />
-        <h2 className="">{`user name`}</h2>
-        <h3 className="">{`user@email.com`}</h3>
+        <h2 className="">{user?.username}</h2>
+        <h3 className="">{user?.email}</h3>
         <div className="flex flex-col justify-center items-center my-3 gap-1">
-          <span className="">{`全ての企業：${"4"}社`}</span>
+          <span className="">{`全ての企業：${"1"}社`}</span>
           <span className="">{`内定・確定済み：${"２"}社`}</span>
         </div>
       </div>

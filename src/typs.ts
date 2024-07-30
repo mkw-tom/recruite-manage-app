@@ -18,12 +18,30 @@ export type editTaskProps = {
   setDummyTasksData: React.Dispatch<React.SetStateAction<TasksDataProps[]>>, 
 }
 
+
+
+export type User  = {
+  _id: string | undefined,
+  username: string,
+  email: string,
+  password: string,
+  profilePicture: string,
+  isAdmin: boolean,
+  allCompanies: [],
+  passCompanies: [],
+  createdAt: Date,
+  updatedAt: Date,
+}
+
 export type PostType = {
+  _id: string;
   userId: string;
   name: string;
   event: string;
   region: string;
-  date: string;
+  startDate: string,
+  endDate: string,
+  completed: boolean;
   mypage: {
     url: string;
     id: string;
@@ -35,7 +53,7 @@ export type PostType = {
       situation: string;
       testFormat: string;
       date: string;
-      limitData: string;
+      limitDate: string;
     }
   ];
   createdAt: Date;

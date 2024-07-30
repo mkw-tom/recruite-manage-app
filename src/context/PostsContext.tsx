@@ -1,34 +1,37 @@
-import { ReactNode, createContext, useContext, useState } from "react";
+import { ReactNode, createContext, useContext, useEffect, useState } from "react";
 import { api } from "../axios";
 import { useAuth } from "./AuthContext";
+import { PostType } from "../typs";
 
-type PostType = {
-  userId: string;
-  name: string;
-  event: string;
-  region: string;
-  date: string;
-  mypage: {
-    url: string;
-    id: string;
-    password: string;
-  };
-  taskFlow: [
-    {
-      task: string;
-      situation: string;
-      testFormat: string;
-      date: string;
-      limitData: string;
-    }
-  ];
-  createdAt: Date;
-  updatedAt: Date;
-};
+// type PostType = {
+//   userId: string;
+//   name: string;
+//   event: string;
+//   region: string;
+//   date: string;
+//   mypage: {
+//     url: string;
+//     id: string;
+//     password: string;
+//   };
+//   taskFlow: [
+//     {
+//       task: string;
+//       situation: string;
+//       testFormat: string;
+//       date: string;
+//       limitDate: string;
+//     }
+//   ];
+//   createdAt: Date;
+//   updatedAt: Date;
+// };
 
 interface PostsContextType {
-  fetchPosts: (userId: string) => void,
   posts: PostType[],
+  allPostsLength: number | null,
+  fetchPosts: (userId: string) => void,
+  completedPosts: () => void,
  }
 
 export const PostsContext = createContext<PostsContextType | undefined>(undefined);
@@ -43,19 +46,33 @@ export const usePosts = () => {
 
 const PostsProvider = ({children}: {children: ReactNode}) => {
   const [posts, setPosts] = useState<PostType[] >([]);
-  const {user} = useAuth()
+  const [allPostsLength, setAllPostsLength] = useState<number | null>(null)
+  
+  
+  // const [completedPosts, setCompletedPosts] = useState<PostType>([])
+
 
     const fetchPosts = async (userId: string) => {
       const response = await api.get(`/posts/${userId}`)
-        .then((res) => setPosts(res.data))
+        .then((res) => {
+          setPosts(res.data)
+          setAllPostsLength(res.data.length)
+        })
         .catch((error) => console.log(error));
     }
 
+
+    const completedPosts = () => {
+      const completedData =  posts.filter((post) => post.completed === true);
+      setPosts(completedData)
+    }
  
 
   const contextValue = {
-    fetchPosts,
     posts,
+    allPostsLength,
+    fetchPosts,
+    completedPosts,
   }
 
   return (
