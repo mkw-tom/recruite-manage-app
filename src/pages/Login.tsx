@@ -1,11 +1,11 @@
-import { ArrowRight, Email, GitHub, Google, List, TaskAlt } from "@mui/icons-material";
-import React, { useState } from "react";
-import DesignBox from "../component/loginForm/design/DesignBox";
-import LoginForm from "../component/loginForm/LoginForm";
-import { api } from "../axios";
-import DescriptionBox from "../component/loginForm/design/DescriptionBox";
+import { Email, TaskAlt } from '@mui/icons-material';
+import React, { useState } from 'react';
+import DesignBox from '../component/loginForm/design/DesignBox';
+import LoginForm from '../component/loginForm/LoginForm';
+import DescriptionBox from '../component/loginForm/design/DescriptionBox';
 
 const login = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [open, setOpen] = useState<boolean>(false);
 
   return (
@@ -32,21 +32,15 @@ const login = () => {
             </li>
           </ul>
 
-            <button 
+          <button
             className="flex gap-2 items-center justify-center bg-blue-700 w-1/2 py-2 text-white font-bold rounded-md"
             onClick={() => setOpen(!open)}
-            >
-              <Email />
-              メールアドレスで利用する
-            </button>
-            
-          {open ? (
-            <LoginForm open={open} setOpen={setOpen}/>
-          ): (
-            <></>
-          )}
+          >
+            <Email />
+            メールアドレスで利用する
+          </button>
 
-          
+          {open ? <LoginForm setOpen={setOpen} /> : <></>}
         </div>
 
         <div className="w-full h-auto lg:w-1/2 flex-col  justify-center items-center">
@@ -54,10 +48,12 @@ const login = () => {
           <p className="text-xl font-bold text-center mt-7">・・・</p>
         </div>
       </main>
-      <hr className="my-32"/>
+      <hr className="my-32" />
       <section>
         <h2 className="text-center text-4xl mb-2 font-bold">Smart就活管理</h2>
-        <h3 className="text-center text-2xl">これまでの煩雑な企業管理のストレスを軽減</h3>
+        <h3 className="text-center text-2xl">
+          これまでの煩雑な企業管理のストレスを軽減
+        </h3>
         <DescriptionBox />
         <DesignBox />
       </section>
