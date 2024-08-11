@@ -29,6 +29,7 @@ export const TaskContext = createContext<TaskContextProps | undefined>(
   undefined
 );
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTask = () => {
   const context = useContext(TaskContext);
   if (context === undefined) {

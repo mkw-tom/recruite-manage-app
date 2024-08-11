@@ -1,4 +1,3 @@
-import React from 'react';
 import { usePosts } from '../../../state/context/PostsContext';
 // import { useAuth } from '../../../state/context/AuthContext';
 // import CardDetail from './CardDetail';
@@ -10,8 +9,7 @@ const CardDetailButtons = () => {
   const { deletePost, posts, setPosts } = usePosts();
   const { selectPost, setSelectPost, setSelectPostTasks, setShowDetail } =
     useSelectPost();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { formsOpenState, formsOpenDispatch } = useFormsOpen();
+  const { formsOpenDispatch } = useFormsOpen();
 
   const openEditPostForm = () => {
     formsOpenDispatch({ type: 'OPEN EDITPOSTFORM' });

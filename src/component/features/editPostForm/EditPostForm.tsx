@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useFormsOpen } from '../../../state/context/FormsOpenContext';
 import EditCompnyAndEventForm from './EditCompnyAndEventForm';
 import EditMyPageForm from './EditMyPageForm';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { TaskType } from '../../../types/typs';
 import { Delete, Edit } from '@mui/icons-material';
 import EditTaskForm from '../editTaskForm/EditTaskForm';

@@ -1,5 +1,4 @@
 import { ArrowDropDown, CheckCircle, Delete, Edit } from '@mui/icons-material';
-import React from 'react';
 
 const DesignCard = () => {
   const taskJudge = (situation: string) => {

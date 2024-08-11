@@ -1,5 +1,3 @@
-import React from 'react';
-
 const DescriptionBox = () => {
   return (
     <div className=" w-4/6 mx-auto text-center mt-32 ">

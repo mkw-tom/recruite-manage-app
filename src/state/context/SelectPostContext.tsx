@@ -25,6 +25,7 @@ const SelectPostContext = createContext<SelectPostContextType | undefined>(
   undefined
 );
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useSelectPost = () => {
   const context = useContext(SelectPostContext);
   if (context === undefined) {

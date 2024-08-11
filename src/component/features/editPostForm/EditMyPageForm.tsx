@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { AddCircle, ArrowBack, Task, SkipNext } from '@mui/icons-material';
 import { usePosts } from '../../../state/context/PostsContext';
 import { EditMyPageType } from '../../../types/contextTypes';

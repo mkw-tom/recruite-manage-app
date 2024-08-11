@@ -1,5 +1,4 @@
 import { CheckCircle } from '@mui/icons-material';
-import React from 'react';
 import { PostType } from '../../../types/typs';
 import { useSelectPost } from '../../../state/context/SelectPostContext';
 import useSituationJudge from '../../../hooks/useSituationJudge';

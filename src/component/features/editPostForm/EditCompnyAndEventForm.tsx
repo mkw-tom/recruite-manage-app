@@ -1,5 +1,5 @@
 import { BusinessOutlined, Cancel, SkipNext } from '@mui/icons-material';
-import React, { useReducer, ChangeEvent } from 'react';
+import { useReducer, ChangeEvent } from 'react';
 import {
   AddEditPostReducer,
   initialState,

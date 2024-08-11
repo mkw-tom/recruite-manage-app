@@ -1,5 +1,5 @@
 import { CheckCircle } from '@mui/icons-material';
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 
 const useSituationJudge = () => {
   const taskJudge = useCallback((situation: string) => {

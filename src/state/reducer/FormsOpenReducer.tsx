@@ -14,6 +14,7 @@ import {
   FormsOpenState,
 } from '../../types/reducerTypes';
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const initialFormsOpenState: FormsOpenState = {
   loginFormOpen: false,
   addPostFormOpen: false,

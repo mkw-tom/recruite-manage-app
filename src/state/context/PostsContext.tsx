@@ -1,4 +1,3 @@
-import React from 'react';
 import { ReactNode, createContext, useContext, useState } from 'react';
 import { api } from '../../axios';
 import { PostType } from '../../types/typs';

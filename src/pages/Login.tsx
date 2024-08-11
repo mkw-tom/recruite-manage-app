@@ -5,7 +5,6 @@ import {
   TaskAlt,
   AppShortcut,
 } from '@mui/icons-material';
-import React from 'react';
 import LoginForm from '../component/features/loginForm/LoginForm';
 import DesignBox from '../component/features/loginForm/DesignBox';
 import DescriptionBox from '../component/features/loginForm/DescriptionBox';

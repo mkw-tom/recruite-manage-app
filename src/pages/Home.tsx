@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import '../index.css';
 import AddPostForm from '../component/features/addPostForm/AddPostForm';
 import { AddCircleOutline } from '@mui/icons-material';
@@ -17,7 +17,7 @@ const Home = () => {
     fetchPosts(user?._id as string);
     // setSelectPost(posts[0]);
     setShowDetail(false);
-  }, []);
+  }, [fetchPosts, setShowDetail, user?._id]);
 
   return (
     <div className="w-full h-auto">

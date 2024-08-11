@@ -1,5 +1,5 @@
 import { AddCircle, ArrowBack, Task, SkipNext } from '@mui/icons-material';
-import React, { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { useAuth } from '../../../state/context/AuthContext';
 import { usePosts } from '../../../state/context/PostsContext';
 import { EditMyPageType } from '../../../types/contextTypes';

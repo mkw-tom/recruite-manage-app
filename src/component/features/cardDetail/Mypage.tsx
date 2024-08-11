@@ -1,5 +1,5 @@
 import { ArrowOutward, VisibilityOff, RemoveRedEye } from '@mui/icons-material';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useSelectPost } from '../../../state/context/SelectPostContext';
 
 const Mypage = () => {

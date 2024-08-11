@@ -1,4 +1,3 @@
-import React from 'react';
 import { usePosts } from '../../../state/context/PostsContext';
 import CardDetail from '../cardDetail/CardDetail';
 import { useSelectPost } from '../../../state/context/SelectPostContext';

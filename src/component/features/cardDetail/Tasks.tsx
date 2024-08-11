@@ -1,4 +1,3 @@
-import React from 'react';
 import { KeyboardDoubleArrowRight } from '@mui/icons-material';
 import { useSelectPost } from '../../../state/context/SelectPostContext';
 import useSituationJudge from '../../../hooks/useSituationJudge';

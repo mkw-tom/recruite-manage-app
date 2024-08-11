@@ -1,7 +1,7 @@
 import { AddCircle, FilterList, Search } from '@mui/icons-material';
 import { useFormsOpen } from '../../../state/context/FormsOpenContext';
 import { usePosts } from '../../../state/context/PostsContext';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from './Card';
 // import { useAuth } from '../../../state/context/AuthContext';
 import { PostType } from '../../../types/typs';
@@ -37,7 +37,7 @@ const CardList = () => {
     );
 
     setFilterPosts(searchData);
-  }, [searchInput]);
+  }, [posts, searchInput]);
 
   return (
     <div className="flex flex-col w-full lg:w-1/2  lg:border-l-2 ml-auto">

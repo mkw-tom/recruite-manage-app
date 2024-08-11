@@ -1,5 +1,5 @@
 import { AddCircle, BusinessOutlined, Cancel } from '@mui/icons-material';
-import React, { ChangeEvent, useReducer } from 'react';
+import { ChangeEvent, useReducer } from 'react';
 import { useAuth } from '../../../state/context/AuthContext';
 import {
   AddEditPostReducer,

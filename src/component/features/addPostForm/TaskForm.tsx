@@ -1,5 +1,5 @@
 import { AddCircle, SkipNext, Task } from '@mui/icons-material';
-import React, { ChangeEvent, useReducer } from 'react';
+import { ChangeEvent, useReducer } from 'react';
 import { taskOptions } from '../../../selectOptions';
 import {
   AddEditTaskReducer,

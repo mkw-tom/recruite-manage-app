@@ -36,7 +36,8 @@ module.exports = {
     'react/prop-types': 'off',  // TypeScript を使用しているため
     '@typescript-eslint/explicit-module-boundary-types': 'off',  // 必要に応じて設定
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],  // 未使用変数の警告
-    'jsx-a11y/anchor-is-valid': 'off',  // 例: アンカー要素の検証ルールをオフ
-    
+    'jsx-a11y/anchor-is-valid': 'off',  // 例: アンカー要素の検証ルールをオフ,
+    'no-unused-vars': 'warn', 
+    'react/react-in-jsx-scope': 'off',
   },
 }

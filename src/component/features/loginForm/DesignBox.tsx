@@ -1,4 +1,3 @@
-import React from 'react';
 import DesignCard from './DesignCard';
 import { CheckCircle } from '@mui/icons-material';
 
