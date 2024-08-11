@@ -1,32 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import '../index.css';
-import CardList from '../component/features/homeCard/CardList';
-import AddFrom from '../component/addForm/AddForm';
-import { usePosts } from '../state/context/PostsContext';
+import AddPostForm from '../component/features/addPostForm/AddPostForm';
 import { AddCircleOutline } from '@mui/icons-material';
+import CardTools from '../component/features/home/CardTools';
+import { useAuth } from '../state/context/AuthContext';
+import { usePosts } from '../state/context/PostsContext';
+import { useSelectPost } from '../state/context/SelectPostContext';
+import BottomDrawer from '../component/features/cardDetail/BottomDrawer';
 
 const Home = () => {
-  const [open, setOpen] = useState<boolean>(false);
-  const { posts } = usePosts();
+  const { user } = useAuth();
+  const { posts, fetchPosts } = usePosts();
+  const { setShowDetail } = useSelectPost();
 
-  const toggle = () => {
-    setOpen(!open);
-  };
+  useEffect(() => {
+    fetchPosts(user?._id as string);
+    // setSelectPost(posts[0]);
+    setShowDetail(false);
+  }, []);
 
   return (
     <div className="w-full h-auto">
       <div className="h-28"></div>
 
-      <main className="w-full h-auto mt-24">
+      <main className="w-full h-auto">
         {posts ? (
-          <CardList />
+          <CardTools />
         ) : (
           <div className="w-96 h-96 flex flex-col items-center justify-center  mx-auto gap-5 rounded-md ">
             <p className="text-2xl mb-8">登録した企業データがありません💦</p>
-            <button
-              className="flex items-center gap-1 justify-center bg-blue-500 text-white font-bold text-xl w-56 h-16 rounded-sm shadow-lg hover:opacity-70"
-              onClick={() => setOpen(true)}
-            >
+            <p></p>
+            <button className="flex items-center gap-1 justify-center  font-bold text-xl w-56 h-16 rounded-sm shadow-lg hover:opacity-70">
               <AddCircleOutline></AddCircleOutline>
               <span>企業を登録する</span>
             </button>
@@ -34,17 +38,9 @@ const Home = () => {
         )}
       </main>
 
-      <AddFrom open={open} setOpen={setOpen} />
+      <AddPostForm />
 
-      <div className="flex flex-col fixed bottom-20 lg:bottom-24 right-3 lg:right-10 items-center">
-        <p className="text-blue-800 mb-1">企業を追加</p>
-        <button
-          className=" bg-blue-600 opacity-70 w-16 h-16 lg:w-20 lg:h-20 rounded-full shadow-xl text-white text-xl lg:text-3xl font-bold"
-          onClick={toggle}
-        >
-          ＋
-        </button>
-      </div>
+      <BottomDrawer />
     </div>
   );
 };

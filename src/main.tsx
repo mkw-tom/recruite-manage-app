@@ -4,15 +4,18 @@ import App from './App.tsx';
 import './index.css';
 import AuthProvider from './state/context/AuthContext.tsx';
 import PostsProvider from './state/context/PostsContext.tsx';
-import TaskProvider from './state/context/TaskContext.tsx';
+import { SelectPostProvider } from './state/context/SelectPostContext.tsx';
+import { FormsOpenProvider } from './state/context/FormsOpenContext.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <AuthProvider>
       <PostsProvider>
-        <TaskProvider>
-          <App />
-        </TaskProvider>
+        <SelectPostProvider>
+          <FormsOpenProvider>
+            <App />
+          </FormsOpenProvider>
+        </SelectPostProvider>
       </PostsProvider>
     </AuthProvider>
   </React.StrictMode>

@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Profile = () => {
+const EntrySheet = () => {
   return (
     <div className="w-96 mx-auto mt-56 text-center text-xl">
-      プロフィール機能はまだ未公開です😭
+      ES管理機能はまだ未公開です😭
     </div>
   );
 };
 
-export default Profile;
+export default EntrySheet;

@@ -6,6 +6,7 @@ import './index.css';
 import Header from './component/common/Header';
 import Profile from './pages/Profile';
 import { useAuth } from './state/context/AuthContext';
+import EntrySheet from './pages/EntrySheet';
 // import Login from "./pages/login"
 
 const App = () => {
@@ -19,6 +20,10 @@ const App = () => {
           element={user ? <Profile /> : <Navigate to="/" />}
         />
         <Route path="/home" element={user ? <Home /> : <Navigate to="/" />} />
+        <Route
+          path="/entrySheet"
+          element={user ? <EntrySheet /> : <Navigate to="/" />}
+        />
         <Route path="/" element={user ? <Navigate to="/home" /> : <Login />} />
       </Routes>
     </BrowserRouter>
