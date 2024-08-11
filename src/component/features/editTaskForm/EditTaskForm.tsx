@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useReducer } from 'react';
+import React, { ChangeEvent, useReducer } from 'react';
 import { Task } from '@mui/icons-material';
 import { taskOptions } from '../../../selectOptions';
 import {
@@ -6,22 +6,26 @@ import {
   initialState,
 } from '../../../state/reducer/AddEditTaskReducer';
 import { useFormsOpen } from '../../../state/context/FormsOpenContext';
-import useJudgeAddTask from '../../../hooks/useJudgeAddTask';
+
+import { useSelectPost } from '../../../state/context/SelectPostContext';
+import useTaskAddAndEdit from '../../../hooks/useTaskAddAndEdit';
+import { TaskType } from '../../../types/typs';
 import { useForm } from 'react-hook-form';
 import { AddEditTaskType } from '../../../types/validationType';
-// import { useSelectPost } from '../../../state/context/SelectPostContext';
 
-const AddTaskForm = () => {
+const EditTaskForm = () => {
   const [state, dispatch] = useReducer(AddEditTaskReducer, initialState);
-  const { formsOpenState, formsOpenDispatch } = useFormsOpen();
-  const handleJudgeAddTask = useJudgeAddTask();
+  const { formsOpenDispatch } = useFormsOpen();
+  const { setSelectPostTasks, selectPostTasks, selectPost } = useSelectPost();
+  const { editTask } = useTaskAddAndEdit();
+  const editTaskData = selectPostTasks.find((task) => task.edit === true);
   const {
+    trigger,
     register,
     formState: { errors },
-    trigger,
   } = useForm<AddEditTaskType>();
-  useEffect(() => {}, [formsOpenState.addTaskFormOpen]);
 
+  //タスクの編集情報の状態管理
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -29,29 +33,56 @@ const AddTaskForm = () => {
     dispatch({ type: 'SET INPUT', payload: { name, value } });
   };
 
-  const handleAdd = async () => {
+  //タスク編集ボタン
+  const handleEdit = async (): Promise<void> => {
     const taskValid = await trigger('task');
-    if (taskValid) {
-      handleJudgeAddTask(state);
+    const dateValid = await trigger('date');
+    if (taskValid && dateValid) {
+      const editData = {
+        ...editTaskData,
+        task: state.task,
+        testFormat: state.testFormat,
+        date: state.date,
+        limitDate: state.limitDate,
+        edit: false,
+      };
+
+      const editedTasks = selectPostTasks.map((data: TaskType): TaskType => {
+        if (data.edit === true) {
+          data.task = state.task;
+          data.testFormat = state.testFormat;
+          data.date = state.date;
+          data.limitDate = state.limitDate;
+          data.edit = false;
+        }
+        return data;
+      });
       formsOpenDispatch({ type: 'CLOSE FORM' });
+      setSelectPostTasks(editedTasks);
+      editTask(
+        selectPost?.customId as string,
+        editTaskData?.customId as string,
+        editData
+      );
     } else {
       // eslint-disable-next-line no-console
-      console.log('invalid');
+      console.log('invalid error');
     }
   };
 
+  //タスク編集キャンセルボタン
   const cancel = () => {
     formsOpenDispatch({ type: 'CLOSE FORM' });
   };
 
   return (
     <div className="w-8/12 lg:5/12 bg-white mx-auto mt-40 pt-8 px-8 overflow-hidden">
-      <h1 className="text-2xl text-red-700 font-bold flex items-center">
+      <h1 className="text-2xl text-blue-700 font-bold flex items-center">
         <Task style={{ fontSize: '33px' }} />
-        <span>タスク追加</span>
+        <span>タスク編集</span>
       </h1>
       <div className="flex flex-col  h-auto w-full lg:w-full gap-6 rounded-md p-3">
-        <h2 className="font-bold text-lg text-red-700">タスク情報</h2>
+        <h2 className="font-bold text-lg text-blue-700">タスク情報</h2>
         <label htmlFor="event">
           タスク：
           <select
@@ -76,18 +107,24 @@ const AddTaskForm = () => {
             id="test"
             name="testFormat"
             className="bg-white shadow-inner border-2 rounded-md w-3/5 "
+            value={state.testFormat}
             onChange={(e) => handleChange(e)}
           />
         </label>
         <label htmlFor="date">
           実践日時：
           <input
+            {...register('date', { required: '実践日時は必須入力です' })}
             type="datetime-local"
             id="date"
             name="date"
             className="bg-white shadow-inner border-2 rounded-md w-3/5 "
+            value={state.date}
             onChange={(e) => handleChange(e)}
           />
+          {errors.date && (
+            <small className="text-red-500 block">{errors.date.message}</small>
+          )}
         </label>
         <label htmlFor="date">
           期限：
@@ -96,6 +133,7 @@ const AddTaskForm = () => {
             id="date"
             name="limitDate"
             className="bg-white shadow-inner border-2 rounded-md w-3/5 "
+            value={state.limitDate}
             onChange={(e) => handleChange(e)}
           />
         </label>
@@ -108,9 +146,9 @@ const AddTaskForm = () => {
           </button>
           <button
             className="bg-red-600 py-2 w-1/3  text-white rounded-md hover:opacity-80"
-            onClick={handleAdd}
+            onClick={handleEdit}
           >
-            Add
+            Edit
           </button>
         </div>
       </div>
@@ -118,4 +156,4 @@ const AddTaskForm = () => {
   );
 };
 
-export default AddTaskForm;
+export default EditTaskForm;

@@ -17,22 +17,22 @@ export interface User {
 }
 
 export interface PostType {
-  _id: string | undefined;
-  userId: string | undefined;
-  name: string | undefined;
-  event: string | undefined;
-  region: string | undefined;
-  startDate: string | undefined;
-  endDate: string | undefined;
-  completed: boolean | undefined;
-  mypage: {
+  customId?: string | undefined;
+  userId?: string | undefined;
+  name?: string | undefined;
+  event?: string | undefined;
+  region?: string | undefined;
+  startDate?: string | undefined;
+  endDate?: string | undefined;
+  completed?: boolean | undefined;
+  mypage?: {
     url: string | undefined;
     id: string | undefined;
     password: string | undefined;
   };
-  taskFlow: [
+  taskFlow?: [
     {
-      _id: string | undefined;
+      customId: string | undefined;
       task: string | undefined;
       situation: string | undefined;
       testFormat: string | undefined;
@@ -44,19 +44,19 @@ export interface PostType {
       edit: boolean | undefined;
     },
   ];
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
-export interface TaskFlowType {
-  _id: string | undefined;
-  task: string | undefined;
-  situation: string | undefined;
-  testFormat: string | undefined;
-  date: string | undefined;
-  limitDate: string | undefined;
-  current: boolean | undefined;
-  next: boolean | undefined;
-  finished: boolean | undefined;
-  edit: boolean | undefined;
+export interface TaskType {
+  customId?: string | undefined;
+  task?: string | undefined;
+  situation?: string | undefined;
+  testFormat?: string | undefined;
+  date?: string | undefined;
+  limitDate?: string | undefined;
+  current?: boolean | undefined;
+  next?: boolean | undefined;
+  finished?: boolean | undefined;
+  edit?: boolean | undefined;
 }

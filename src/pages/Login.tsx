@@ -1,12 +1,21 @@
-import { Email, TaskAlt } from '@mui/icons-material';
-import React, { useState } from 'react';
-import DesignBox from '../component/loginForm/design/DesignBox';
-import LoginForm from '../component/loginForm/LoginForm';
-import DescriptionBox from '../component/loginForm/design/DescriptionBox';
+import {
+  AccountBox,
+  LibraryBooksTwoTone,
+  Person,
+  TaskAlt,
+  AppShortcut,
+} from '@mui/icons-material';
+import React from 'react';
+import LoginForm from '../component/features/loginForm/LoginForm';
+import DesignBox from '../component/features/loginForm/DesignBox';
+import DescriptionBox from '../component/features/loginForm/DescriptionBox';
+import { useFormsOpen } from '../state/context/FormsOpenContext';
 
 const login = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [open, setOpen] = useState<boolean>(false);
+  const { formsOpenState, formsOpenDispatch } = useFormsOpen();
+
+  const openLoginForm = () => formsOpenDispatch({ type: 'OPEN LOGINFORM' });
 
   return (
     <div className="w-full h-full pb-24">
@@ -20,7 +29,7 @@ const login = () => {
           <ul className="w-7/10 flex-flex-col items-center text-lg mb-4">
             <li>
               <TaskAlt className="mr-2 text-green-800"></TaskAlt>
-              <span>エントリーした企業をカンタン登録・編集</span>
+              <span>エントリー企業をカンタン登録・編集</span>
             </li>
             <li className="flex items-center">
               <TaskAlt className="mr-2 text-green-800"></TaskAlt>
@@ -34,13 +43,13 @@ const login = () => {
 
           <button
             className="flex gap-2 items-center justify-center bg-blue-700 w-1/2 py-2 text-white font-bold rounded-md"
-            onClick={() => setOpen(!open)}
+            onClick={openLoginForm}
           >
-            <Email />
-            メールアドレスで利用する
+            <AccountBox />
+            <span>Getting started</span>
           </button>
 
-          {open ? <LoginForm setOpen={setOpen} /> : <></>}
+          {formsOpenState.loginFormOpen ? <LoginForm /> : <></>}
         </div>
 
         <div className="w-full h-auto lg:w-1/2 flex-col  justify-center items-center">
@@ -55,7 +64,25 @@ const login = () => {
           これまでの煩雑な企業管理のストレスを軽減
         </h3>
         <DescriptionBox />
-        <DesignBox />
+        <div className="flex items-center w-11/12 mx-auto flex-col ">
+          <div className="w-full lg:w-3/5 mx-auto mb-10">
+            <DesignBox />
+          </div>
+          <div className="flex w-8/12 md:w-3/5 flex-col lg:flex-row text-center mx-auto  justify-around gap-10 text-blue-800">
+            <p className="font-bold text-xl ">
+              <Person></Person>
+              <span className="ml-3">ESまで管理</span>
+            </p>
+            <p className="font-bold text-xl">
+              <LibraryBooksTwoTone></LibraryBooksTwoTone>
+              <span className="ml-3">選考フローを可視化</span>
+            </p>
+            <p className="font-bold text-xl">
+              <AppShortcut />
+              <span className="ml-3">スマートフォン対応</span>
+            </p>
+          </div>
+        </div>
       </section>
     </div>
   );

@@ -1,22 +1,22 @@
 import { ReactNode, createContext, useContext, useState } from 'react';
 import { api } from '../../axios';
-import { TaskFlowType } from '../../types/typs';
-import { AddType } from '../../types/taskContextTypes';
+import { TaskType } from '../../types/typs';
+import { AddType } from '../../types/contextTypes';
 
 interface TaskContextProps {
   newPostId: string | undefined;
-  taskFlow: TaskFlowType[] | undefined;
-  setTaskFlow: React.Dispatch<React.SetStateAction<TaskFlowType[] | undefined>>;
+  taskFlow: TaskType[] | undefined;
+  setTaskFlow: React.Dispatch<React.SetStateAction<TaskType[] | undefined>>;
   editTaskId: string;
   setEditTaskId: React.Dispatch<React.SetStateAction<string>>;
   // getTaskData: (postId: string) => void,
   editTask: (
     postId: string,
     taskId: string,
-    reqDatas: TaskFlowType | undefined
+    reqDatas: TaskType | undefined
   ) => void;
   add: (addDates: AddType) => void;
-  pushTask: (postId: string, reqDatas: TaskFlowType) => void;
+  pushTask: (postId: string, reqDatas: TaskType) => void;
   pullTask: (postId: string, taskId: string) => void;
   editMyPage: (reqDatas: {
     url: string | undefined;
@@ -39,7 +39,7 @@ export const useTask = () => {
 
 const TaskProvider = ({ children }: { children: ReactNode }) => {
   const [newPostId, setNewPostId] = useState<string | undefined>(undefined);
-  const [taskFlow, setTaskFlow] = useState<TaskFlowType[] | undefined>([]);
+  const [taskFlow, setTaskFlow] = useState<TaskType[] | undefined>([]);
   const [editTaskId, setEditTaskId] = useState<string>('');
 
   // const getTaskData = async (postId: string) => {
@@ -55,11 +55,9 @@ const TaskProvider = ({ children }: { children: ReactNode }) => {
       .catch((error) => error);
   };
 
-  const pushTask = async (postId: string, reqDatas: TaskFlowType) => {
+  const pushTask = async (postId: string, reqDatas: TaskType) => {
     await api
-      .put(`/posts/${postId}/addTask`, {
-        ...reqDatas,
-      })
+      .put(`/posts/${postId}/addTask`, reqDatas)
       .then((res) => {
         return res;
       })
@@ -76,7 +74,7 @@ const TaskProvider = ({ children }: { children: ReactNode }) => {
   const editTask = async (
     postId: string,
     taskId: string,
-    reqDatas: TaskFlowType | undefined
+    reqDatas: TaskType | undefined
   ) => {
     await api
       .put(`/posts/${postId}/editTask/${taskId}`, reqDatas)

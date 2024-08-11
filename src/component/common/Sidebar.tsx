@@ -13,23 +13,27 @@ import {
   Drawer,
   Button,
 } from '@mui/material';
-import { Home, LoginOutlined, Person2 } from '@mui/icons-material';
+import {
+  Home,
+  LibraryBooksTwoTone,
+  LoginOutlined,
+  Person2,
+} from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import avater from '../../assets/noAvatar.png';
 import { useAuth } from '../../state/context/AuthContext';
-import { usePosts } from '../../state/context/PostsContext';
+// import { usePosts } from '../../state/context/PostsContext';
 
 const Sidebar = () => {
   const { user, logOut } = useAuth();
   const [open, setOpen] = useState(false);
-  const { allPostsLength, completedPostsLength } = usePosts();
 
   const listItems = [
     {
       // eslint-disable-next-line react/react-in-jsx-scope
       text: (
         <Link to="/home" className="text-sky-700 block w-full">
-          ホーム
+          home
         </Link>
       ),
       // eslint-disable-next-line react/react-in-jsx-scope
@@ -39,11 +43,21 @@ const Sidebar = () => {
       // eslint-disable-next-line react/react-in-jsx-scope
       text: (
         <Link to="/profile" className="text-sky-700 block w-full">
-          プロフィール
+          Profile
         </Link>
       ),
       // eslint-disable-next-line react/react-in-jsx-scope
       icon: <Person2 className="text-sky-700"></Person2>,
+    },
+    {
+      // eslint-disable-next-line react/react-in-jsx-scope
+      text: (
+        <Link to="/entrySheet" className="text-sky-700 block w-full">
+          ES管理
+        </Link>
+      ),
+      // eslint-disable-next-line react/react-in-jsx-scope
+      icon: <LibraryBooksTwoTone className="text-sky-700" />,
     },
     {
       text: (
@@ -71,10 +85,6 @@ const Sidebar = () => {
         />
         <h2 className="">{user?.username}</h2>
         <h3 className="">{user?.email}</h3>
-        <div className="flex flex-col justify-center items-center my-3 gap-1">
-          <span className="">{`全ての企業：${allPostsLength}社`}</span>
-          <span className="">{`内定・確定済み：${completedPostsLength}社`}</span>
-        </div>
       </div>
       <Divider />
       <List>

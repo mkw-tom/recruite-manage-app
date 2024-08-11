@@ -27,7 +27,7 @@ module.exports = {
       { allowConstantExport: true },
     ],
     'no-console': ['error'],
-    'indent': ['error', 2],
+    // 'indent': ['error', 2],
     // 'quotes': ['error', 'single'],
     // Prettier との競合を防ぐために設定
     'prettier/prettier': 'error',
@@ -37,5 +37,6 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',  // 必要に応じて設定
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],  // 未使用変数の警告
     'jsx-a11y/anchor-is-valid': 'off',  // 例: アンカー要素の検証ルールをオフ
+    
   },
 }

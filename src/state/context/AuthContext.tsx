@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import {
   ReactNode,
   createContext,
@@ -11,8 +11,8 @@ import { User } from '../../types/typs';
 
 interface AuthContextType {
   user: User | null;
-  login: (email: string, password: string) => void;
-  regist: (usernama: string, email: string, passwrod: string) => void;
+  login: (username: string, password: string) => void;
+  regist: (usernama: string, passwrod: string) => void;
   logOut: () => void;
 }
 
@@ -20,7 +20,6 @@ export const AuthContext = createContext<AuthContextType | undefined>(
   undefined
 );
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (context === undefined) {
@@ -38,30 +37,28 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
       setUser(userData);
       return;
     }
-
     localStorage.setItem('user', JSON.stringify(user));
   }, [user, userData]);
 
-  const login = async (email: string, password: string) => {
+  const login = useCallback(async (username: string, password: string) => {
     await api
       .post('/auth/login', {
-        email: email,
+        username: username,
         password: password,
       })
       .then((res) => setUser(res.data))
-      .catch((error) => error);
-  };
+      .catch(() => alert('ログインに失敗しました'));
+  }, []);
 
-  const regist = (username: string, email: string, password: string) => {
+  const regist = useCallback((username: string, password: string) => {
     api
-      .post(`/auth/register`, {
+      .post('/auth/register', {
         username: username,
-        email: email,
         password: password,
       })
       .then((res) => setUser(res.data))
       .catch((error) => alert(error));
-  };
+  }, []);
 
   const logOut = () => {
     setUser(null);
