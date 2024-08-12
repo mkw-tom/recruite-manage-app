@@ -5,12 +5,12 @@
   "type": "module",
 "scripts": {
   "dev": "vite",
-  "start": "node server.js",  
-  "build": "tsc -b && vite build",
+  "start": "serve -s build",  
+  "build": "tsc && vite build",
   "preview": "vite preview",
   "lint": "eslint 'src/**/*.{js,ts,tsx}'",
   "lint:fix": "eslint 'src/**/*.{js,ts,tsx}' --fix",
-  "heroku-postbuild": "tsc -b && vite build"
+  "heroku-postbuild": "npm run build"
 },
   "dependencies": {
     "@emotion/react": "^11.11.4",
