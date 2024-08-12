@@ -16,6 +16,7 @@ const LoginForm = () => {
     formState: { errors },
     trigger,
   } = useForm<LoginFormType>();
+
   const handleLogin = async (): Promise<void> => {
     const usernameValid = await trigger('username');
     const passwordValid = await trigger('password');

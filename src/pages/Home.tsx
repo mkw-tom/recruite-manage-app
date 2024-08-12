@@ -17,7 +17,7 @@ const Home = () => {
     fetchPosts(user?._id as string);
     // setSelectPost(posts[0]);
     setShowDetail(false);
-  }, [fetchPosts, setShowDetail, user?._id]);
+  }, []);
 
   return (
     <div className="w-full h-auto">

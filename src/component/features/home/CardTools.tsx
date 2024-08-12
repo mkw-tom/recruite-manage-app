@@ -8,10 +8,6 @@ import CardDetailButtons from '../cardDetail/CardDetailButtons';
 const CardTools = () => {
   const { posts } = usePosts();
   const { showDetail } = useSelectPost();
-  // useEffect(() => {
-  //   // eslint-disable-next-line no-console
-  //   console.log('更新しました');
-  // }, [selectPostTasks]);
 
   return (
     <div className="flex w-full h-auto flex-col md:flex-row box-border px-6 gap-2">

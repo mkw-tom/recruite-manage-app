@@ -5,22 +5,7 @@ import useSituationJudge from '../../../hooks/useSituationJudge';
 const Tasks = () => {
   const { current, next, selectPostTasks } = useSelectPost();
   const taskJudge = useSituationJudge();
-  // const taskJudge = (situation: string) => {
-  //   switch (situation) {
-  //     case '未完了':
-  //       return <p className="w-4 h-4 bg-gray-400 rounded-full mr-1 my-2"></p>;
-  //     case '結果待ち':
-  //       return (
-  //         <p className="w-4 h-4 bg-green-500 animate-pulse rounded-full my-2"></p>
-  //       );
-  //     case '通過':
-  //       return (
-  //         <CheckCircle className="text-green-500 w-4 h-4 my-2"></CheckCircle>
-  //       );
-  //     // case '落選':
-  //     //   return <CheckCircle className="text-red-500 w-4 h-4"></CheckCircle>;
-  //   }
-  // };
+
   return (
     <>
       {selectPostTasks.length === 0 ? (
