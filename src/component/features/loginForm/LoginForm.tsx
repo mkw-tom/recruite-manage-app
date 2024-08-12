@@ -23,8 +23,9 @@ const LoginForm = () => {
       login(username, password);
     } else {
       // eslint-disable-next-line no-console
-      console.log('inValid');
+      return console.log('inValid');
     }
+    closeForm();
   };
 
   const handleRegist = async (): Promise<void> => {
@@ -34,8 +35,9 @@ const LoginForm = () => {
       regist(username, password);
     } else {
       // eslint-disable-next-line no-console
-      console.log('inValid');
+      return console.log('inValid');
     }
+    closeForm();
   };
 
   const closeForm = () => formsOpenDispatch({ type: 'CLOSE FORM' });
