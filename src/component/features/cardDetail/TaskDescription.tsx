@@ -4,22 +4,16 @@ import AddTaskForm from '../addTaskForm/AddTaskForm';
 import { useSelectPost } from '../../../state/context/SelectPostContext';
 import Task from './Task';
 import { useFormsOpen } from '../../../state/context/FormsOpenContext';
-// import {
-//   AddEditPostReducer,
-//   initialState,
-// } from '../../../state/reducer/AddEditPostReducer';
 
 const TaskDescription = () => {
   const [open, setOpen] = useState<boolean>(false);
   const { selectPostTasks } = useSelectPost();
   const { formsOpenState, formsOpenDispatch } = useFormsOpen();
-  // const [state, dispatch] = useReducer(AddEditPostReducer, initialState);
 
   const openAddTaskForm = useCallback(
     () => formsOpenDispatch({ type: 'OPEN ADDTASKFORM' }),
     [formsOpenDispatch]
   );
-  // useEffect(() => {}, [openAddTaskForm]);
 
   const toggle = () => {
     setOpen(!open);

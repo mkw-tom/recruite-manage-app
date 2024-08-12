@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useReducer } from 'react';
+import { ChangeEvent, useReducer } from 'react';
 import { Task } from '@mui/icons-material';
 import { taskOptions } from '../../../selectOptions';
 import {
@@ -13,14 +13,13 @@ import { AddEditTaskType } from '../../../types/validationType';
 
 const AddTaskForm = () => {
   const [state, dispatch] = useReducer(AddEditTaskReducer, initialState);
-  const { formsOpenState, formsOpenDispatch } = useFormsOpen();
+  const { formsOpenDispatch } = useFormsOpen();
   const handleJudgeAddTask = useJudgeAddTask();
   const {
     register,
     formState: { errors },
     trigger,
   } = useForm<AddEditTaskType>();
-  useEffect(() => {}, [formsOpenState.addTaskFormOpen]);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
