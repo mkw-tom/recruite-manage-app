@@ -43,7 +43,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const login = useCallback(async (username: string, password: string) => {
     await api
-      .post('/auth/login', {
+      .post('/api/auth/login', {
         username: username,
         password: password,
       })
@@ -53,7 +53,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const regist = useCallback((username: string, password: string) => {
     api
-      .post('/auth/register', {
+      .post('/api/auth/register', {
         username: username,
         password: password,
       })

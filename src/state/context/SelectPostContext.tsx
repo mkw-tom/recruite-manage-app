@@ -44,7 +44,7 @@ export const SelectPostProvider = ({ children }: { children: ReactNode }) => {
 
   const fetchSelectPosts = async (postId: string) => {
     await api
-      .get(`/posts/${postId}/select`)
+      .get(`/api/posts/${postId}/select`)
       .then((res) => {
         setSelectPost(res.data);
         setSelectPostTasks(res.data.taskFlow);
