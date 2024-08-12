@@ -10,7 +10,7 @@ const useTaskAddAndEdit = () => {
       reqDatas: PushTaskType | undefined
     ): Promise<void> => {
       await api
-        .put(`/posts/${postId}/addTask`, reqDatas)
+        .put(`/api/posts/${postId}/addTask`, reqDatas)
         .catch((error) => alert(error));
     },
     []
@@ -19,7 +19,7 @@ const useTaskAddAndEdit = () => {
   const pullTask = useCallback(
     async (postId: string, taskId: string): Promise<void> => {
       await api
-        .put(`/posts/${postId}/deleteTask/${taskId}`)
+        .put(`/api/posts/${postId}/deleteTask/${taskId}`)
         .catch((error) => alert(error));
     },
     []
@@ -32,7 +32,7 @@ const useTaskAddAndEdit = () => {
       reqDatas: TaskType | undefined
     ): Promise<void> => {
       await api
-        .put(`/posts/${postId}/editTask/${taskId}`, reqDatas)
+        .put(`/api/posts/${postId}/editTask/${taskId}`, reqDatas)
         .catch((error) => alert(error));
     },
     []

@@ -49,7 +49,7 @@ const TaskProvider = ({ children }: { children: ReactNode }) => {
 
   const add = async (addDatas: AddType) => {
     await api
-      .post('/posts/add', addDatas)
+      .post('/api/posts/add', addDatas)
       .then((res) => {
         setNewPostId(res.data._id);
       })
@@ -58,7 +58,7 @@ const TaskProvider = ({ children }: { children: ReactNode }) => {
 
   const pushTask = async (postId: string, reqDatas: TaskType) => {
     await api
-      .put(`/posts/${postId}/addTask`, reqDatas)
+      .put(`/api/posts/${postId}/addTask`, reqDatas)
       .then((res) => {
         return res;
       })
@@ -67,7 +67,7 @@ const TaskProvider = ({ children }: { children: ReactNode }) => {
 
   const pullTask = async (postId: string, taskId: string) => {
     await api
-      .put(`/posts/${postId}/deleteTask/${taskId}`)
+      .put(`/api/posts/${postId}/deleteTask/${taskId}`)
       .then((res) => res)
       .catch((error) => alert(error));
   };
@@ -78,7 +78,7 @@ const TaskProvider = ({ children }: { children: ReactNode }) => {
     reqDatas: TaskType | undefined
   ) => {
     await api
-      .put(`/posts/${postId}/editTask/${taskId}`, reqDatas)
+      .put(`/api/posts/${postId}/editTask/${taskId}`, reqDatas)
       .then((res) => res)
       .catch((error) => alert(error));
   };
@@ -89,7 +89,7 @@ const TaskProvider = ({ children }: { children: ReactNode }) => {
     password: string | undefined;
   }) => {
     await api
-      .put(`/posts/${newPostId}`, {
+      .put(`/api/posts/${newPostId}`, {
         mypage: reqDatas,
       })
       .then((res) => res)

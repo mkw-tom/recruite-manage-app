@@ -44,7 +44,7 @@ const PostsProvider = ({ children }: { children: ReactNode }) => {
 
   const fetchPosts = async (userId: string) => {
     await api
-      .get(`/posts/${userId}`)
+      .get(`/api/posts/${userId}`)
       .then((res) => {
         setPosts(res.data);
         // setAllPostsLength(res.data.length);
@@ -54,7 +54,7 @@ const PostsProvider = ({ children }: { children: ReactNode }) => {
 
   const addPost = async (addDatas: AddType) => {
     await api
-      .post('/posts/add', addDatas)
+      .post('/api/posts/add', addDatas)
       .then((res) => {
         setPosts([...posts, res.data]);
         setAddPostData(res.data);
@@ -65,7 +65,7 @@ const PostsProvider = ({ children }: { children: ReactNode }) => {
 
   const editMyPage = async (postId: string, mypageData: EditMyPageType) => {
     await api
-      .put(`/posts/${postId}`, {
+      .put(`/api/posts/${postId}`, {
         mypage: mypageData,
       })
       .catch((error) => alert(error));
@@ -75,18 +75,24 @@ const PostsProvider = ({ children }: { children: ReactNode }) => {
     postId: string,
     editData: { completed: boolean }
   ) => {
-    await api.put(`/posts/${postId}`, editData).catch((error) => alert(error));
+    await api
+      .put(`/api/posts/${postId}`, editData)
+      .catch((error) => alert(error));
   };
 
   const editCompanyAndEventData = async (
     postId: string,
     editData: EditCompanyAndEventDataType
   ) => {
-    await api.put(`/posts/${postId}`, editData).catch((error) => alert(error));
+    await api
+      .put(`/api/posts/${postId}`, editData)
+      .catch((error) => alert(error));
   };
 
   const deletePost = async (postId: string) => {
-    await api.delete(`/posts/${postId}/delete`).catch((error) => alert(error));
+    await api
+      .delete(`/api/posts/${postId}/delete`)
+      .catch((error) => alert(error));
   };
 
   const contextValue = {
