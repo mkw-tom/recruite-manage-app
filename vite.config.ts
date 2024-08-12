@@ -4,10 +4,6 @@ import react from '@vitejs/plugin-react';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  build: {
-    outDir: 'dist', // 出力ディレクトリ
-    sourcemap: true, // デバッグのためにソースマップを生成
-  },
   server: {
     port: 3002, // ローカル開発用のポート
     proxy: {
